@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { SiteFooter } from './index'
 
+const GUMROAD_URL = 'https://realnadinex.gumroad.com/l/thecarbonledger'
+
 export const Route = createFileRoute('/the-book')({
   head: () => ({
     meta: [
@@ -8,7 +10,7 @@ export const Route = createFileRoute('/the-book')({
       {
         name: 'description',
         content:
-          'The Carbon Ledger by Nadine Pillay examines how net zero climate frameworks function as debt mechanisms — and who pays. Available now.',
+          'The Carbon Ledger by Nadine Pillay examines how net zero climate frameworks function as debt mechanisms — and who pays. Available now on Gumroad.',
       },
     ],
   }),
@@ -50,7 +52,7 @@ function TheBookPage() {
           }}
           className="book-hero-grid"
         >
-          {/* Book cover */}
+          {/* Book cover placeholder — replace img src when cover file is supplied */}
           <div
             className="book-cover-placeholder"
             style={{
@@ -73,7 +75,7 @@ function TheBookPage() {
                 color: 'var(--np-accent)',
               }}
             >
-              Cover to be supplied
+              Cover
             </div>
             <div
               style={{
@@ -146,11 +148,10 @@ function TheBookPage() {
             </div>
 
             <a
-              href="#"
+              href={GUMROAD_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
-              title="Buy The Carbon Ledger — link to be updated"
               style={{ display: 'inline-block', marginBottom: '1rem' }}
             >
               Buy the book
@@ -201,16 +202,25 @@ function TheBookPage() {
             }}
           >
             <p style={{ marginBottom: '1.5rem' }}>
-              [First paragraph — the book's central argument in full, 3–5 sentences. To be supplied
-              by the author. This section makes the case directly: what the book says, not just
-              what it is about.]
+              Net zero is not a climate goal. It is an equation. One ton emitted requires one ton
+              avoided. The atmosphere is balanced. The books are clean. The planet is saved. This
+              is the mathematics you are meant to accept without examining it too closely — because
+              the moment you examine it, the moment you ask what "avoided" actually means, who
+              calculates it, against what baseline, and who profits from the calculation, the
+              equation dissolves.
             </p>
             <p style={{ marginBottom: '1.5rem' }}>
-              [Second paragraph — the analytical method or the stakes. What does this book do that
-              other writing on climate does not?]
+              What remains is not a climate framework. It is an accounting system. And like every
+              accounting system designed by those who hold the ledger, it was built to produce a
+              specific result. The result is not atmospheric stability. The result is the continued
+              right of the wealthy to consume, underwritten by the enforced underdevelopment of
+              the poor.
             </p>
             <p>
-              [Third paragraph — who this book is for, or why this argument matters now.]
+              <em>The Carbon Ledger</em> traces this architecture from its origins in a single
+              sentence at the 1972 Stockholm Conference to its current form as sovereign debt
+              dressed as climate finance. It is written for the person who has felt the game being
+              played without being able to name the rules. It gives them the name.
             </p>
           </div>
         </section>
@@ -247,21 +257,21 @@ function TheBookPage() {
             {[
               {
                 act: 'Act I',
-                title: 'The Language of Zero',
+                title: 'The Board',
                 description:
-                  'How the concept of net zero was constructed, and what obligations it was designed to absorb.',
+                  'How the game was designed. Between 1972 and today, a legal and financial architecture transformed the atmosphere into property, development into liability, and poverty into an asset class. This act names the architects and traces the blueprint.',
               },
               {
                 act: 'Act II',
-                title: 'The Arithmetic',
+                title: 'The Ledger',
                 description:
-                  'Carbon accounting, offset markets, and the mathematics of deferral. Who counts, and on whose terms.',
+                  'What the game actually costs. South Africa as the primary laboratory: the JETP, the R1.25 trillion financing gap, the methane undercounting, the 422,000 jobs, the compound interest accruing across generations. Indonesia, Colombia, and the DRC as proof the mechanism repeats. The ledger is the same everywhere. Only the currency changes.',
               },
               {
                 act: 'Act III',
-                title: 'Who Pays',
+                title: 'The Move',
                 description:
-                  'The distribution of climate cost across geographies, generations, and economic positions.',
+                  'How to stop being played. Not escape — you cannot escape a board you live on. But the conscious, chosen, historically grounded refusal to be moved by hands you can now see. What repudiation looks like. What the atmospheric commons restored would require.',
               },
             ].map((item) => (
               <div
@@ -310,7 +320,8 @@ function TheBookPage() {
           </div>
         </section>
 
-        {/* Reviews / Endorsements placeholder */}
+        {/* Praise section — hidden until endorsements are available */}
+        {/* Uncomment and populate when reviews are received:
         <section
           style={{
             borderTop: '1px solid var(--np-border)',
@@ -330,49 +341,13 @@ function TheBookPage() {
           >
             Praise
           </div>
-
           <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '2rem',
-            }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem' }}
             className="praise-grid"
           >
-            {[1, 2].map((i) => (
-              <div
-                key={i}
-                style={{
-                  borderLeft: '2px solid var(--np-border)',
-                  paddingLeft: '1.5rem',
-                }}
-              >
-                <p
-                  style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontSize: '1.1rem',
-                    fontStyle: 'italic',
-                    color: 'var(--np-muted)',
-                    lineHeight: 1.6,
-                    marginBottom: '1rem',
-                  }}
-                >
-                  "Endorsement or review quote to be populated here."
-                </p>
-                <div
-                  style={{
-                    fontFamily: "'DM Mono', monospace",
-                    fontSize: '0.6rem',
-                    letterSpacing: '0.1em',
-                    color: 'var(--np-muted)',
-                  }}
-                >
-                  — Reviewer name, publication or title
-                </div>
-              </div>
-            ))}
           </div>
         </section>
+        */}
 
         {/* Bottom CTA */}
         <div
@@ -383,11 +358,10 @@ function TheBookPage() {
           }}
         >
           <a
-            href="#"
+            href={GUMROAD_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"
-            title="Buy The Carbon Ledger — link to be updated"
           >
             Buy the book
           </a>
