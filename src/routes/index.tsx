@@ -104,62 +104,20 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* Book cover */}
-        <div
-          className="book-cover-placeholder"
-          style={{
-            width: 'clamp(140px, 18vw, 220px)',
-            aspectRatio: '2/3',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '1.5rem 1rem',
-            gap: '0.75rem',
-            flexShrink: 0,
-          }}
-        >
-          <div
-            style={{
-              fontFamily: "'DM Mono', monospace",
-              fontSize: '0.55rem',
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              color: 'var(--np-accent)',
-            }}
-          >
-            Cover
-          </div>
-          <div
-            style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize: '0.85rem',
-              fontWeight: 600,
-              textAlign: 'center',
-              lineHeight: 1.3,
-              color: 'var(--np-text)',
-            }}
-          >
-            The Carbon Ledger
-          </div>
-          <div
-            style={{
-              width: '2rem',
-              height: '1px',
-              background: 'var(--np-accent)',
-            }}
-          />
-          <div
-            style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize: '0.75rem',
-              color: 'var(--np-muted)',
-              textAlign: 'center',
-            }}
-          >
-            Nadine Pillay
-          </div>
-        </div>
+{/* Book cover */}
+
+  href="/the-book"
+  style={{ display: 'block', flexShrink: 0 }}
+>
+  <img
+    src="/book mock up single.png"
+    alt="The Carbon Ledger — Nadine Pillay"
+    style={{
+      width: 'clamp(140px, 18vw, 220px)',
+      display: 'block',
+    }}
+  />
+</a>
       </div>
 
       <style>{`
