@@ -157,7 +157,7 @@ function AboutPage() {
           {/* Author photo */}
           <div style={{ position: 'sticky', top: '5rem' }}>
             <img
-              src="/nadine-profile.jpg"
+              src="/nadine profile photo.jpg"
               alt="Nadine Pillay"
               style={{
                 width: '100%',
