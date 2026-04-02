@@ -77,7 +77,6 @@ function AboutPage() {
               Author · Analyst · Narrative Architect
             </div>
 
-            {/* Bio copy — placeholder for author-supplied content */}
             <div
               style={{
                 fontFamily: "'Instrument Sans', sans-serif",
@@ -88,21 +87,28 @@ function AboutPage() {
               }}
             >
               <p style={{ marginBottom: '1.5rem' }}>
-                Nadine Pillay is a South African author and analyst whose work sits at the
-                intersection of finance, policy, and ecological debt. Her writing asks the questions
-                that climate frameworks prefer to leave unanswered.
+                Nadine Pillay is a South African author and analyst based in Durban. She writes
+                about the intersection of climate policy, sovereign debt, and the financial
+                architecture that determines who pays for the transition — and who profits from it.
               </p>
               <p style={{ marginBottom: '1.5rem' }}>
-                [Author bio to be supplied. This is a placeholder for the full prose biography —
-                written in the first or third person as preferred, without a CV format or awards
-                list. The emphasis is on perspective, not credential.]
+                Her work follows the money between climate language and debt service. Over the past
+                year, she has traced the legal, financial, and technical mechanisms through which
+                net zero frameworks convert atmospheric obligation into development debt — using
+                South Africa as the primary case study and satellite data, treaty texts, and loan
+                documents as the primary sources.
               </p>
               <p style={{ marginBottom: '1.5rem' }}>
-                [Second paragraph — background, analytical approach, or intellectual lineage.]
+                <em>The Carbon Ledger: The Hidden Arithmetic Behind Net Zero</em> is her first
+                book. It began with a question about a number — R1.25 trillion, the financing gap
+                South Africa was told it needed to close — and ended with a forensic account of
+                how atmospheric obligation became an instrument of enclosure. The research took
+                three years. The satellite data was captured on 1 March 2026.
               </p>
               <p>
-                [Third paragraph — current focus, what the author is working on, or a closing
-                statement about the work.]
+                She is a narrative architect working across long-form nonfiction, strategic concept
+                development, and public analysis. She believes trust and accuracy are the only
+                sustainable currencies — in writing, as in finance.
               </p>
             </div>
 
@@ -150,39 +156,18 @@ function AboutPage() {
 
           {/* Author photo */}
           <div style={{ position: 'sticky', top: '5rem' }}>
-            <div
-              className="photo-placeholder"
+            <img
+              src="/nadine-profile.jpg"
+              alt="Nadine Pillay"
               style={{
                 width: '100%',
                 aspectRatio: '3/4',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.5rem',
+                objectFit: 'cover',
+                objectPosition: 'center top',
+                display: 'block',
+                filter: 'grayscale(15%)',
               }}
-            >
-              <div
-                style={{
-                  fontFamily: "'DM Mono', monospace",
-                  fontSize: '0.6rem',
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                  color: 'var(--np-muted)',
-                }}
-              >
-                Author photo
-              </div>
-              <div
-                style={{
-                  fontFamily: "'DM Mono', monospace",
-                  fontSize: '0.55rem',
-                  color: 'var(--np-border)',
-                }}
-              >
-                to be supplied
-              </div>
-            </div>
+            />
           </div>
         </div>
       </article>
