@@ -54,7 +54,7 @@ function TheBookPage() {
         >
           {/* Book cover */}
           <img
-            src="/book_mock_up_single.png"
+            src="/book mock up single.png"
             alt="The Carbon Ledger — Nadine Pillay"
             style={{
               width: '100%',
