@@ -1,0 +1,256 @@
+@import "tailwindcss" source("../");
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Instrument+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap');
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --np-bg: #0a0a08;
+  --np-text: #f2ede6;
+  --np-accent: #c8923a;
+  --np-muted: #6b6b63;
+  --np-border: #1e1e1a;
+  --np-surface: #111110;
+
+  --background: #0a0a08;
+  --foreground: #f2ede6;
+  --card: #111110;
+  --card-foreground: #f2ede6;
+  --popover: #111110;
+  --popover-foreground: #f2ede6;
+  --primary: #c8923a;
+  --primary-foreground: #0a0a08;
+  --secondary: #1e1e1a;
+  --secondary-foreground: #f2ede6;
+  --muted: #1e1e1a;
+  --muted-foreground: #6b6b63;
+  --accent: #c8923a;
+  --accent-foreground: #0a0a08;
+  --border: #1e1e1a;
+  --input: #1e1e1a;
+  --ring: #c8923a;
+  --radius: 0px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    background-color: var(--np-bg);
+    color: var(--np-text);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--np-bg);
+    color: var(--np-text);
+    font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--np-text);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* Fade-in on load */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.7s ease forwards;
+}
+
+.fade-in-delay {
+  opacity: 0;
+  animation: fadeIn 0.7s ease 0.2s forwards;
+}
+
+.fade-in-delay-2 {
+  opacity: 0;
+  animation: fadeIn 0.7s ease 0.4s forwards;
+}
+
+/* Typography utilities */
+.font-heading {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-body {
+  font-family: 'Instrument Sans', -apple-system, sans-serif;
+}
+
+.font-mono-label {
+  font-family: 'DM Mono', 'Courier New', monospace;
+}
+
+/* Accent color */
+.text-accent {
+  color: var(--np-accent);
+}
+
+.text-muted {
+  color: var(--np-muted);
+}
+
+/* Border utilities */
+.border-np {
+  border-color: var(--np-border);
+}
+
+/* Hover accent */
+.hover-accent:hover {
+  color: var(--np-accent);
+  transition: color 0.15s ease;
+}
+
+/* Book cover placeholder */
+.book-cover-placeholder {
+  background: linear-gradient(145deg, #1a1a16 0%, #0f0f0c 100%);
+  border: 1px solid var(--np-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.book-cover-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--np-accent);
+}
+
+/* Blockquote */
+blockquote.pull-quote {
+  border-left: 2px solid var(--np-accent);
+  padding: 1.5rem 2rem;
+  margin: 0;
+  background: var(--np-surface);
+}
+
+blockquote.pull-quote p {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--np-text);
+  margin: 0;
+}
+
+blockquote.pull-quote cite {
+  display: block;
+  margin-top: 1rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--np-muted);
+}
+
+/* Nav */
+.site-nav {
+  border-bottom: 1px solid var(--np-border);
+}
+
+/* CTA buttons */
+.btn-primary {
+  display: inline-block;
+  background: var(--np-accent);
+  color: var(--np-bg);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.875rem 1.75rem;
+  transition: background 0.15s ease, transform 0.1s ease;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: #d9a24a;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--np-text);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.875rem 1.75rem;
+  border: 1px solid var(--np-border);
+  transition: border-color 0.15s ease, color 0.15s ease;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  border-color: var(--np-accent);
+  color: var(--np-accent);
+}
+
+/* Post card */
+.post-card {
+  border-top: 1px solid var(--np-border);
+  padding: 1.75rem 0;
+  transition: border-color 0.15s ease;
+}
+
+.post-card:hover {
+  border-top-color: var(--np-accent);
+}
+
+/* Photo placeholder */
+.photo-placeholder {
+  background: var(--np-surface);
+  border: 1px solid var(--np-border);
+}
