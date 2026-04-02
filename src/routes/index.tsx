@@ -449,7 +449,7 @@ export function SiteFooter() {
             {[
               { label: 'Buy the Book', href: GUMROAD_URL, title: 'Buy The Carbon Ledger on Gumroad' },
               { label: 'Substack', href: 'https://realnadinex.substack.com', title: 'Substack' },
-              { label: 'LinkedIn', href: 'https://linkedin.com/in/nadinepillay', title: 'LinkedIn' },
+              { label: 'LinkedIn', href: 'https://www.linkedin.com/in/realnadinex/', title: 'LinkedIn' },
             ].map((link) => (
               <a
                 key={link.label}
