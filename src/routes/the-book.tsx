@@ -53,19 +53,14 @@ function TheBookPage() {
           className="book-hero-grid"
         >
           {/* Book cover placeholder — replace img src when cover file is supplied */}
-          <div
-            className="book-cover-placeholder"
-            style={{
-              width: '100%',
-              aspectRatio: '2/3',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '2rem 1.5rem',
-              gap: '1rem',
-            }}
-          >
+          <img
+  src="/book-cover.png"
+  alt="The Carbon Ledger — Nadine Pillay"
+  style={{
+    width: '100%',
+    display: 'block',
+  }}
+/>
             <div
               style={{
                 fontFamily: "'DM Mono', monospace",
