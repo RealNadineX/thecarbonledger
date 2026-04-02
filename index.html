@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nadine Pillay — Author & Analyst</title>
+  <meta name="description" content="Nadine Pillay is a South African author and analyst. Her debut book, The Carbon Ledger, examines how net zero climate frameworks function as debt mechanisms — and who pays." />
+  <meta property="og:site_name" content="Nadine Pillay" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nadine Pillay — Author & Analyst" />
+  <meta property="og:description" content="The Carbon Ledger: The Hidden Arithmetic Behind Net Zero" />
+  <meta property="og:image" content="book mock up single.png" />
+  <meta name="theme-color" content="#0a0a08" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Instrument+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" />
+  <style>
+    :root {
+      --np-bg: #0a0a08;
+      --np-text: #f2ede6;
+      --np-accent: #c8923a;
+      --np-muted: #6b6b63;
+      --np-border: #1e1e1a;
+      --np-surface: #111110;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; background: var(--np-bg); }
+
+    body {
+      background: var(--np-bg);
+      color: var(--np-text);
+      font-family: 'Instrument Sans', -apple-system, sans-serif;
+      font-weight: 400;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--np-text);
+    }
+
+    /* ── NAV ── */
+    .site-nav {
+      border-bottom: 1px solid var(--np-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--np-bg);
+    }
+
+    .nav-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4rem;
+    }
+
+    .nav-brand {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--np-accent);
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--np-muted);
+      transition: color 0.15s ease;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--np-accent); }
+
+    /* ── PAGES ── */
+    .page { display: none; animation: fadeIn 0.5s ease forwards; }
+    .page.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-block;
+      background: var(--np-accent);
+      color: var(--np-bg);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.875rem 1.75rem;
+      transition: background 0.15s ease;
+      font-weight: 500;
+      white-space: nowrap;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary:hover { background: #d9a24a; }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--np-text);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.875rem 1.75rem;
+      border: 1px solid var(--np-border);
+      transition: border-color 0.15s ease, color 0.15s ease;
+      font-weight: 500;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover { border-color: var(--np-accent); color: var(--np-accent); }
+
+    /* ── PULL QUOTE ── */
+    blockquote.pull-quote {
+      border-left: 2px solid var(--np-accent);
+      padding: 1.5rem 2rem;
+      background: var(--np-surface);
+    }
+
+    blockquote.pull-quote p {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--np-text);
+    }
+
+    blockquote.pull-quote cite {
+      display: block;
+      margin-top: 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--np-muted);
+    }
+
+    /* ── MONO LABEL ── */
+    .mono-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--np-muted);
+    }
+
+    .mono-label.accent { color: var(--np-accent); }
+
+    /* ── POST CARD ── */
+    .post-card {
+      display: block;
+      border-top: 1px solid var(--np-border);
+      padding: 1.75rem 0;
+      transition: border-top-color 0.15s ease;
+      cursor: pointer;
+    }
+
+    .post-card:hover { border-top-color: var(--np-accent); }
+
+    .post-card h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+      transition: color 0.15s ease;
+    }
+
+    .post-card:hover h3 { color: var(--np-accent); }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--np-border);
+      background: var(--np-surface);
+      padding: 3rem 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .footer-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--np-muted);
+      transition: color 0.15s ease;
+    }
+
+    .footer-links a:hover { color: var(--np-accent); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--np-border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--np-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-bottom span:last-child { max-width: 42rem; }
+
+    /* ── HOME PAGE ── */
+    .hero {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: clamp(4rem, 10vw, 8rem) 1.5rem clamp(3rem, 8vw, 6rem);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 600;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-style: italic;
+      color: var(--np-muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.5;
+      max-width: 36rem;
+    }
+
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .hero-cover img {
+      width: clamp(140px, 18vw, 220px);
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .book-argument {
+      border-top: 1px solid var(--np-border);
+      background: var(--np-surface);
+      padding: clamp(3rem, 6vw, 5rem) 1.5rem;
+    }
+
+    .argument-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 12rem 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .argument-body p {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      line-height: 1.75;
+      color: var(--np-text);
+      max-width: 52rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .argument-body p:last-of-type { margin-bottom: 0; }
+
+    .text-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--np-accent);
+      border-bottom: 1px solid var(--np-accent);
+      padding-bottom: 2px;
+      transition: opacity 0.15s ease;
+      cursor: pointer;
+    }
+
+    .text-link:hover { opacity: 0.7; }
+
+    .pull-quote-section {
+      padding: clamp(3rem, 6vw, 5rem) 1.5rem;
+    }
+
+    .pull-quote-inner { max-width: 72rem; margin: 0 auto; }
+
+    .writing-preview {
+      border-top: 1px solid var(--np-border);
+      padding: clamp(3rem, 6vw, 5rem) 1.5rem;
+    }
+
+    .writing-preview-inner { max-width: 72rem; margin: 0 auto; }
+
+    .writing-preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2.5rem;
+    }
+
+    .writing-preview-header h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 400;
+    }
+
+    /* ── THE BOOK PAGE ── */
+    .book-page { max-width: 72rem; margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) 1.5rem; }
+
+    .book-hero-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: clamp(3rem, 6vw, 5rem);
+    }
+
+    .book-hero-grid img { width: 100%; display: block; }
+
+    .book-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .book-subtitle {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1rem, 2.2vw, 1.3rem);
+      font-style: italic;
+      color: var(--np-muted);
+      margin-bottom: 2rem;
+    }
+
+    .book-section {
+      border-top: 1px solid var(--np-border);
+      padding-top: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    }
+
+    .book-section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--np-muted);
+      margin-bottom: 2rem;
+    }
+
+    .argument-text p {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: clamp(1rem, 1.8vw, 1.05rem);
+      line-height: 1.8;
+      color: var(--np-text);
+      max-width: 52rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .argument-text p:last-child { margin-bottom: 0; }
+
+    .acts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .act-item { border-top: 2px solid var(--np-border); padding-top: 1.5rem; }
+
+    .act-item h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .act-item p {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--np-muted);
+      line-height: 1.65;
+    }
+
+    .book-cta-bottom {
+      border-top: 1px solid var(--np-border);
+      padding-top: 3rem;
+      text-align: center;
+    }
+
+    /* ── ABOUT PAGE ── */
+    .about-page { max-width: 72rem; margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) 1.5rem; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-name {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+    }
+
+    .bio-text p {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: clamp(1rem, 1.8vw, 1.05rem);
+      line-height: 1.8;
+      color: var(--np-text);
+      max-width: 52rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .bio-text p:last-child { margin-bottom: 0; }
+
+    .about-links {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--np-border);
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .about-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--np-accent);
+      border-bottom: 1px solid var(--np-accent);
+      padding-bottom: 2px;
+    }
+
+    .about-photo {
+      position: sticky;
+      top: 5rem;
+    }
+
+    .about-photo img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(15%);
+    }
+
+    /* ── WRITING PAGE ── */
+    .writing-page { max-width: 72rem; margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) 1.5rem; }
+
+    .writing-page h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .writing-intro {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--np-muted);
+      line-height: 1.6;
+      margin-bottom: 3.5rem;
+      max-width: 36rem;
+    }
+
+    .writing-intro a {
+      color: var(--np-accent);
+      border-bottom: 1px solid var(--np-accent);
+      padding-bottom: 1px;
+    }
+
+    .substack-cta {
+      border-top: 1px solid var(--np-border);
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .substack-cta p {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--np-muted);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+      max-width: 36rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-cover { display: flex; }
+      .hero-cover img { width: 160px; }
+      .argument-inner { grid-template-columns: 1fr; }
+      .book-hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .book-hero-grid img { max-width: 200px; }
+      .acts-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-photo { position: static; max-width: 280px; }
+      .nav-links { gap: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links a { font-size: 0.6rem; letter-spacing: 0.05em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <span class="nav-brand" onclick="showPage('home')">Nadine Pillay</span>
+      <ul class="nav-links">
+        <li><a onclick="showPage('home')" data-page="home" class="active">Home</a></li>
+        <li><a onclick="showPage('about')" data-page="about">About</a></li>
+        <li><a onclick="showPage('the-book')" data-page="the-book">The Book</a></li>
+        <li><a onclick="showPage('writing')" data-page="writing">Writing</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HOME PAGE -->
+  <div id="page-home" class="page active">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>NADINE<br>PILLAY</h1>
+          <p class="hero-tagline">The arithmetic does not lie. Even when the language does.</p>
+          <div class="hero-ctas">
+            <a href="https://realnadinex.gumroad.com/l/thecarbonledger" target="_blank" rel="noopener noreferrer" class="btn-primary">Buy the book</a>
+            <a href="https://realnadinex.substack.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">Read the writing</a>
+          </div>
+        </div>
+        <div class="hero-cover">
+          <a onclick="showPage('the-book')" style="cursor:pointer">
+            <img src="book mock up single.png" alt="The Carbon Ledger — Nadine Pillay" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="book-argument">
+      <div class="argument-inner">
+        <div class="mono-label">What this book argues</div>
+        <div class="argument-body">
+          <p>Net zero is not a climate target. It is an accounting structure — one designed to defer the cost of atmospheric damage across decades and assign its settlement to the countries least responsible for creating it. <em>The Carbon Ledger</em> traces the legal, financial, and technical architecture through which the sky was enclosed, development was converted to debt, and the vocabulary of rescue was placed in service of extraction.</p>
+          <p>The arithmetic has always been available. This book makes it visible.</p>
+          <div style="margin-top:2rem">
+            <a onclick="showPage('the-book')" class="text-link">More about the book →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pull-quote-section">
+      <div class="pull-quote-inner">
+        <blockquote class="pull-quote">
+          <p>"Four systems. One argument. The equation is this: you are the minus. They are the plus. The sum is always zero. The profit is always theirs."</p>
+          <cite>— The Carbon Ledger, Chapter 3</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="writing-preview">
+      <div class="writing-preview-inner">
+        <div class="writing-preview-header">
+          <h2>Recent Writing</h2>
+          <a onclick="showPage('writing')" class="mono-label" style="cursor:pointer;transition:color 0.15s ease" onmouseover="this.style.color='var(--np-accent)'" onmouseout="this.style.color='var(--np-muted)'">All posts →</a>
+        </div>
+        <div style="border-top:1px solid var(--np-border); padding-top:1.75rem">
+          <p style="font-family:'Instrument Sans',sans-serif; font-size:1rem; color:var(--np-muted); line-height:1.65; margin-bottom:1.5rem">Essays and analysis published on Substack. New writing on climate finance, net zero accountability, and the politics of carbon accounting.</p>
+          <a href="https://realnadinex.substack.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">Read on Substack ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div>
+            <div style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.1rem; font-weight:500; color:var(--np-text); margin-bottom:0.5rem">Nadine Pillay</div>
+            <div class="mono-label">Author · Analyst · Narrative Architect</div>
+          </div>
+          <div class="footer-links">
+            <a href="https://realnadinex.gumroad.com/l/thecarbonledger" target="_blank" rel="noopener noreferrer">Buy the Book</a>
+            <a href="https://realnadinex.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>
+            <a href="https://www.linkedin.com/in/realnadinex/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span id="footer-year"></span>
+          <span>This site does not use cookies or collect personal data beyond standard server logs. In accordance with POPIA (South Africa), no personal information is stored or shared without consent.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ABOUT PAGE -->
+  <div id="page-about" class="page">
+    <article class="about-page">
+      <div class="mono-label" style="margin-bottom:3rem">About</div>
+      <div class="about-grid">
+        <div>
+          <h1 class="about-name">Nadine Pillay</h1>
+          <div class="mono-label accent" style="margin-bottom:2rem">Author · Analyst · Narrative Architect</div>
+          <div class="bio-text">
+            <p>Nadine Pillay is a South African author and analyst. She writes about the intersection of climate policy, sovereign debt, and the financial architecture that determines who pays for the transition — and who profits from it.</p>
+            <p>Her work follows the money between climate language and debt service. Over the past year, she traced the legal, financial, and technical mechanisms through which net zero frameworks convert atmospheric obligation into development debt — using South Africa as the primary case study and satellite data, treaty texts, and loan documents as the primary sources.</p>
+            <p><em>The Carbon Ledger: The Hidden Arithmetic Behind Net Zero</em> is her first book. It began with a question about a number — R1.25 trillion, the financing gap South Africa was told it needed to close — and ended with a forensic account of how atmospheric obligation became an instrument of enclosure. The research took a year. The satellite data was captured on 1 March 2026.</p>
+            <p>She is a narrative architect working across long-form nonfiction, strategic concept development, and public analysis. She believes trust and accuracy are the only sustainable currencies — in writing, as in finance.</p>
+          </div>
+          <div class="about-links">
+            <a href="https://realnadinex.substack.com" target="_blank" rel="noopener noreferrer">Writing on Substack ↗</a>
+            <a href="https://www.linkedin.com/in/realnadinex/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          </div>
+        </div>
+        <div class="about-photo">
+          <img src="Nadine Profile Photo.jpg" alt="Nadine Pillay" />
+        </div>
+      </div>
+    </article>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div>
+            <div style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.1rem; font-weight:500; color:var(--np-text); margin-bottom:0.5rem">Nadine Pillay</div>
+            <div class="mono-label">Author · Analyst · Narrative Architect</div>
+          </div>
+          <div class="footer-links">
+            <a href="https://realnadinex.gumroad.com/l/thecarbonledger" target="_blank" rel="noopener noreferrer">Buy the Book</a>
+            <a href="https://realnadinex.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>
+            <a href="https://www.linkedin.com/in/realnadinex/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span id="footer-year-about"></span>
+          <span>This site does not use cookies or collect personal data beyond standard server logs. In accordance with POPIA (South Africa), no personal information is stored or shared without consent.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- THE BOOK PAGE -->
+  <div id="page-the-book" class="page">
+    <div class="book-page">
+      <div class="mono-label" style="margin-bottom:3rem">The Book</div>
+
+      <div class="book-hero-grid">
+        <img src="book mock up single.png" alt="The Carbon Ledger — Nadine Pillay" />
+        <div>
+          <h1 class="book-title">The Carbon Ledger</h1>
+          <div class="book-subtitle">The Hidden Arithmetic Behind Net Zero</div>
+          <a href="https://realnadinex.gumroad.com/l/thecarbonledger" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-block; margin-bottom:1rem">Buy the book</a>
+          <div class="mono-label" style="margin-top:0.75rem">Available on Gumroad</div>
+        </div>
+      </div>
+
+      <div class="book-section">
+        <div class="book-section-label">The Argument</div>
+        <div class="argument-text">
+          <p>Net zero is not a climate goal. It is an equation. One ton emitted requires one ton avoided. The atmosphere is balanced. The books are clean. The planet is saved. This is the mathematics you are meant to accept without examining it too closely — because the moment you examine it, the moment you ask what "avoided" actually means, who calculates it, against what baseline, and who profits from the calculation, the equation dissolves.</p>
+          <p>What remains is not a climate framework. It is an accounting system. And like every accounting system designed by those who hold the ledger, it was built to produce a specific result. The result is not atmospheric stability. The result is the continued right of the wealthy to consume, underwritten by the enforced underdevelopment of the poor.</p>
+          <p><em>The Carbon Ledger</em> traces this architecture from its origins in a single sentence at the 1972 Stockholm Conference to its current form as sovereign debt dressed as climate finance. It is written for the person who has felt the game being played without being able to name the rules. It gives them the name.</p>
+        </div>
+      </div>
+
+      <div class="book-section">
+        <div class="book-section-label">Structure</div>
+        <div class="acts-grid">
+          <div class="act-item">
+            <div class="mono-label accent" style="margin-bottom:0.75rem">Act I</div>
+            <h3>The Board</h3>
+            <p>How the game was designed. Between 1972 and today, a legal and financial architecture transformed the atmosphere into property, development into liability, and poverty into an asset class. This act names the architects and traces the blueprint.</p>
+          </div>
+          <div class="act-item">
+            <div class="mono-label accent" style="margin-bottom:0.75rem">Act II</div>
+            <h3>The Ledger</h3>
+            <p>What the game actually costs. South Africa as the primary laboratory: the JETP, the R1.25 trillion financing gap, the methane undercounting, the 422,000 jobs, the compound interest accruing across generations. Indonesia, Colombia, and the DRC as proof the mechanism repeats. The ledger is the same everywhere. Only the currency changes.</p>
+          </div>
+          <div class="act-item">
+            <div class="mono-label accent" style="margin-bottom:0.75rem">Act III</div>
+            <h3>The Move</h3>
+            <p>How to stop being played. Not escape — you cannot escape a board you live on. But the conscious, chosen, historically grounded refusal to be moved by hands you can now see. What repudiation looks like. What the atmospheric commons restored would require.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-cta-bottom">
+        <a href="https://realnadinex.gumroad.com/l/thecarbonledger" target="_blank" rel="noopener noreferrer" class="btn-primary">Buy the book</a>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div>
+            <div style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.1rem; font-weight:500; color:var(--np-text); margin-bottom:0.5rem">Nadine Pillay</div>
+            <div class="mono-label">Author · Analyst · Narrative Architect</div>
+          </div>
+          <div class="footer-links">
+            <a href="https://realnadinex.gumroad.com/l/thecarbonledger" target="_blank" rel="noopener noreferrer">Buy the Book</a>
+            <a href="https://realnadinex.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>
+            <a href="https://www.linkedin.com/in/realnadinex/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span id="footer-year-book"></span>
+          <span>This site does not use cookies or collect personal data beyond standard server logs. In accordance with POPIA (South Africa), no personal information is stored or shared without consent.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- WRITING PAGE -->
+  <div id="page-writing" class="page">
+    <div class="writing-page">
+      <div class="mono-label" style="margin-bottom:1rem">Writing</div>
+      <h1>Essays &amp; Analysis</h1>
+      <p class="writing-intro" style="margin-top:1rem">
+        Published on <a href="https://realnadinex.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>. Climate finance, net zero accountability, and the politics of carbon accounting.
+      </p>
+
+      <div class="substack-cta">
+        <p>All essays are published and archived at realnadinex.substack.com. Each post links directly to the full text. Subscribe to receive new writing as it is published.</p>
+        <a href="https://realnadinex.substack.com" target="_blank" rel="noopener noreferrer" class="btn-primary">Read on Substack ↗</a>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div>
+            <div style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.1rem; font-weight:500; color:var(--np-text); margin-bottom:0.5rem">Nadine Pillay</div>
+            <div class="mono-label">Author · Analyst · Narrative Architect</div>
+          </div>
+          <div class="footer-links">
+            <a href="https://realnadinex.gumroad.com/l/thecarbonledger" target="_blank" rel="noopener noreferrer">Buy the Book</a>
+            <a href="https://realnadinex.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>
+            <a href="https://www.linkedin.com/in/realnadinex/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span id="footer-year-writing"></span>
+          <span>This site does not use cookies or collect personal data beyond standard server logs. In accordance with POPIA (South Africa), no personal information is stored or shared without consent.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set copyright year everywhere
+    const year = new Date().getFullYear();
+    ['footer-year','footer-year-about','footer-year-book','footer-year-writing'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = '© ' + year + ' Nadine Pillay. All rights reserved.';
+    });
+
+    // Page routing
+    function showPage(name) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      // Show target
+      const target = document.getElementById('page-' + name);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      // Update nav
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.dataset.page === name);
+      });
+      // Update URL hash for bookmarking
+      history.pushState(null, '', '#' + name);
+    }
+
+    // Handle back/forward and direct URL with hash
+    function handleHash() {
+      const hash = window.location.hash.replace('#', '') || 'home';
+      const valid = ['home', 'about', 'the-book', 'writing'];
+      showPage(valid.includes(hash) ? hash : 'home');
+    }
+
+    window.addEventListener('popstate', handleHash);
+    handleHash();
+  </script>
+
+</body>
+</html>
