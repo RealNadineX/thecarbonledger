@@ -87,7 +87,7 @@ function AboutPage() {
               }}
             >
               <p style={{ marginBottom: '1.5rem' }}>
-                Nadine Pillay is a South African author and analyst based in Durban. She writes
+                Nadine Pillay is a South African author and analyst based in South Africa. She writes
                 about the intersection of climate policy, sovereign debt, and the financial
                 architecture that determines who pays for the transition — and who profits from it.
               </p>
@@ -103,7 +103,7 @@ function AboutPage() {
                 book. It began with a question about a number — R1.25 trillion, the financing gap
                 South Africa was told it needed to close — and ended with a forensic account of
                 how atmospheric obligation became an instrument of enclosure. The research took
-                three years. The satellite data was captured on 1 March 2026.
+                a year. The satellite data was captured on 1 March 2026.
               </p>
               <p>
                 She is a narrative architect working across long-form nonfiction, strategic concept
@@ -130,7 +130,7 @@ function AboutPage() {
                 },
                 {
                   label: 'LinkedIn',
-                  href: 'https://linkedin.com/in/nadinepillay',
+                  href: 'https://www.linkedin.com/in/realnadinex/',
                 },
               ].map((link) => (
                 <a
