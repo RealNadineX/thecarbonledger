@@ -52,68 +52,15 @@ function TheBookPage() {
           }}
           className="book-hero-grid"
         >
-          {/* Book cover placeholder — replace img src when cover file is supplied */}
+          {/* Book cover */}
           <img
-  src="/book-cover.png"
-  alt="The Carbon Ledger — Nadine Pillay"
-  style={{
-    width: '100%',
-    display: 'block',
-  }}
-/>
-            <div
-              style={{
-                fontFamily: "'DM Mono', monospace",
-                fontSize: '0.55rem',
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: 'var(--np-accent)',
-              }}
-            >
-              Cover
-            </div>
-            <div
-              style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontSize: '1.1rem',
-                fontWeight: 600,
-                textAlign: 'center',
-                lineHeight: 1.3,
-                color: 'var(--np-text)',
-              }}
-            >
-              The Carbon Ledger
-            </div>
-            <div
-              style={{
-                width: '2.5rem',
-                height: '1px',
-                background: 'var(--np-accent)',
-              }}
-            />
-            <div
-              style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontSize: '0.85rem',
-                color: 'var(--np-muted)',
-                textAlign: 'center',
-              }}
-            >
-              The Hidden Arithmetic
-              <br />
-              Behind Net Zero
-            </div>
-            <div
-              style={{
-                fontFamily: "'DM Mono', monospace",
-                fontSize: '0.6rem',
-                color: 'var(--np-muted)',
-                marginTop: '0.5rem',
-              }}
-            >
-              Nadine Pillay
-            </div>
-          </div>
+            src="/book_mock_up_single.png"
+            alt="The Carbon Ledger — Nadine Pillay"
+            style={{
+              width: '100%',
+              display: 'block',
+            }}
+          />
 
           {/* Title + CTA */}
           <div>
