@@ -1,7 +1,8 @@
 import { createServerFn } from '@tanstack/react-start'
 
-// Placeholder — replace with the actual Gumroad atom feed URL when supplied
-const GUMROAD_FEED_URL = process.env.GUMROAD_FEED_URL || ''
+// Substack RSS feed — pulls all published essays from realnadinex.substack.com
+const RSS_FEED_URL =
+  process.env.RSS_FEED_URL || 'https://realnadinex.substack.com/feed'
 
 export interface RssPost {
   title: string
@@ -13,7 +14,6 @@ export interface RssPost {
 
 function parseAtomFeed(xml: string): RssPost[] {
   const posts: RssPost[] = []
-
   // Support both Atom (<entry>) and RSS (<item>)
   const entryRegex = /<(?:entry|item)[\s>]([\s\S]*?)<\/(?:entry|item)>/g
   let match: RegExpExecArray | null
@@ -81,12 +81,8 @@ export const fetchRssFeed = createServerFn({ method: 'GET' })
   .handler(async ({ data }) => {
     const limit = data?.limit ?? 0
 
-    if (!GUMROAD_FEED_URL) {
-      return [] as RssPost[]
-    }
-
     try {
-      const response = await fetch(GUMROAD_FEED_URL, {
+      const response = await fetch(RSS_FEED_URL, {
         headers: { Accept: 'application/atom+xml, application/rss+xml, application/xml, text/xml' },
         signal: AbortSignal.timeout(6000),
       })
@@ -97,7 +93,6 @@ export const fetchRssFeed = createServerFn({ method: 'GET' })
 
       const xml = await response.text()
       const posts = parseAtomFeed(xml)
-
       return (limit > 0 ? posts.slice(0, limit) : posts) as RssPost[]
     } catch {
       return [] as RssPost[]
