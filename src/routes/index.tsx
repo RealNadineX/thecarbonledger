@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { fetchRssFeed, type RssPost } from '@/server/rss.functions'
 
+const GUMROAD_URL = 'https://realnadinex.gumroad.com/l/thecarbonledger'
+
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
@@ -84,11 +86,10 @@ function HeroSection() {
 
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <a
-              href="#"
+              href={GUMROAD_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
-              title="Buy The Carbon Ledger — link to be updated"
             >
               Buy the book
             </a>
@@ -185,7 +186,10 @@ function BookArgumentSection() {
       }}
     >
       <div style={{ maxWidth: '72rem', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '12rem 1fr', gap: '3rem', alignItems: 'start' }}>
+        <div
+          className="argument-grid"
+          style={{ display: 'grid', gridTemplateColumns: '12rem 1fr', gap: '3rem', alignItems: 'start' }}
+        >
           <div
             style={{
               fontFamily: "'DM Mono', monospace",
@@ -209,10 +213,12 @@ function BookArgumentSection() {
                 maxWidth: '52rem',
               }}
             >
-              Net zero is not a climate target. It is an accounting structure — one designed to defer
-              obligation, distribute cost across time, and insulate specific actors from consequence.
-              The Carbon Ledger traces the hidden arithmetic behind the world's most cited climate
-              commitment.
+              Net zero is not a climate target. It is an accounting structure — one designed to
+              defer the cost of atmospheric damage across decades and assign its settlement to the
+              countries least responsible for creating it. <em>The Carbon Ledger</em> traces the
+              legal, financial, and technical architecture through which the sky was enclosed,
+              development was converted to debt, and the vocabulary of rescue was placed in service
+              of extraction.
             </p>
             <p
               style={{
@@ -223,9 +229,7 @@ function BookArgumentSection() {
                 maxWidth: '52rem',
               }}
             >
-              Copy to be supplied by the author. This placeholder marks the section structure —
-              3 to 4 sentences in prose, no bullet points, making the book's core argument directly
-              and without apology.
+              The arithmetic has always been available. This book makes it visible.
             </p>
             <div style={{ marginTop: '2rem' }}>
               <a
@@ -267,10 +271,10 @@ function PullQuoteSection() {
       <div style={{ maxWidth: '72rem', margin: '0 auto' }}>
         <blockquote className="pull-quote">
           <p>
-            "The ledger is never neutral. Someone decides what counts, what offsets, and who
-            carries the remainder. That someone is not the atmosphere."
+            "Four systems. One argument. The equation is this: you are the minus. They are the
+            plus. The sum is always zero. The profit is always theirs."
           </p>
-          <cite>— The Carbon Ledger, Chapter One</cite>
+          <cite>— The Carbon Ledger, Chapter 3</cite>
         </blockquote>
       </div>
     </section>
@@ -443,7 +447,7 @@ export function SiteFooter() {
 
           <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center' }}>
             {[
-              { label: 'Gumroad', href: '#', title: 'Buy The Carbon Ledger' },
+              { label: 'Buy the Book', href: GUMROAD_URL, title: 'Buy The Carbon Ledger on Gumroad' },
               { label: 'Substack', href: 'https://realnadinex.substack.com', title: 'Substack' },
               { label: 'LinkedIn', href: 'https://linkedin.com/in/nadinepillay', title: 'LinkedIn' },
             ].map((link) => (
