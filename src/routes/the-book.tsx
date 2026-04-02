@@ -45,7 +45,7 @@ function TheBookPage() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '240px 1fr',
+            gridTemplateColumns: '320px 1fr',
             gap: '4rem',
             alignItems: 'start',
             marginBottom: 'clamp(3rem, 6vw, 5rem)',
