@@ -9,7 +9,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Nadine Pillay — Author & Analyst" />
   <meta property="og:description" content="The Carbon Ledger: The Hidden Arithmetic Behind Net Zero" />
-  <meta property="og:image" content="book mock up single.png" />
+  <meta property="og:image" content="public/book mock up single.png" />
   <meta name="theme-color" content="#0a0a08" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,7 +26,12 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; background: var(--np-bg); }
+    /* Fix Firefox zoom-out overflow — no fixed min-widths anywhere */
+    html {
+      scroll-behavior: smooth;
+      background: var(--np-bg);
+      overflow-x: hidden;
+    }
 
     body {
       background: var(--np-bg);
@@ -36,9 +41,13 @@
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      width: 100%;
     }
 
     a { color: inherit; text-decoration: none; }
+
+    img { max-width: 100%; height: auto; display: block; }
 
     h1, h2, h3 {
       font-family: 'Cormorant Garamond', Georgia, serif;
@@ -55,6 +64,7 @@
       top: 0;
       z-index: 100;
       background: var(--np-bg);
+      width: 100%;
     }
 
     .nav-inner {
@@ -62,9 +72,10 @@
       margin: 0 auto;
       padding: 0 1.5rem;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: space-between;
       height: 4rem;
+      gap: 1rem;
     }
 
     .nav-brand {
@@ -75,23 +86,27 @@
       color: var(--np-accent);
       font-weight: 500;
       cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
       align-items: center;
       list-style: none;
+      flex-wrap: nowrap;
     }
 
     .nav-links a {
       font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--np-muted);
       transition: color 0.15s ease;
       cursor: pointer;
+      white-space: nowrap;
     }
 
     .nav-links a:hover,
@@ -118,7 +133,6 @@
       padding: 0.875rem 1.75rem;
       transition: background 0.15s ease;
       font-weight: 500;
-      white-space: nowrap;
       cursor: pointer;
       border: none;
     }
@@ -137,7 +151,6 @@
       border: 1px solid var(--np-border);
       transition: border-color 0.15s ease, color 0.15s ease;
       font-weight: 500;
-      white-space: nowrap;
       cursor: pointer;
     }
 
@@ -152,7 +165,7 @@
 
     blockquote.pull-quote p {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-size: clamp(1.2rem, 3vw, 2rem);
       font-style: italic;
       line-height: 1.4;
       color: var(--np-text);
@@ -162,7 +175,7 @@
       display: block;
       margin-top: 1rem;
       font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--np-muted);
@@ -190,16 +203,27 @@
 
     .post-card:hover { border-top-color: var(--np-accent); }
 
-    .post-card h3 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(1rem, 1.6vw, 1.2rem);
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      line-height: 1.3;
+    .post-card h3, .post-card h2 {
       transition: color 0.15s ease;
     }
 
-    .post-card:hover h3 { color: var(--np-accent); }
+    .post-card:hover h3,
+    .post-card:hover h2 { color: var(--np-accent); }
+
+    /* ── TEXT LINK ── */
+    .text-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--np-accent);
+      border-bottom: 1px solid var(--np-accent);
+      padding-bottom: 2px;
+      transition: opacity 0.15s ease;
+      cursor: pointer;
+    }
+
+    .text-link:hover { opacity: 0.7; }
 
     /* ── FOOTER ── */
     .site-footer {
@@ -207,17 +231,15 @@
       background: var(--np-surface);
       padding: 3rem 1.5rem;
       margin-top: 2rem;
+      width: 100%;
     }
 
-    .footer-inner {
-      max-width: 72rem;
-      margin: 0 auto;
-    }
+    .footer-inner { max-width: 72rem; margin: 0 auto; }
 
     .footer-top {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: start;
       flex-wrap: wrap;
       gap: 2rem;
       margin-bottom: 2.5rem;
@@ -257,61 +279,58 @@
       letter-spacing: 0.05em;
     }
 
-    .footer-bottom span:last-child { max-width: 42rem; }
-
-    /* ── HOME PAGE ── */
+    /* ── HOME — HERO ── */
     .hero {
       max-width: 72rem;
       margin: 0 auto;
-      padding: clamp(4rem, 10vw, 8rem) 1.5rem clamp(3rem, 8vw, 6rem);
+      padding: clamp(3rem, 8vw, 7rem) 1.5rem clamp(2.5rem, 6vw, 5rem);
     }
 
     .hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) auto;
-      gap: 4rem;
-      align-items: start;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) auto;
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: flex-end;
     }
 
     .hero h1 {
-      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-size: clamp(3rem, 9vw, 7rem);
       font-weight: 600;
       line-height: 0.95;
       letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .hero-tagline {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
       font-style: italic;
       color: var(--np-muted);
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       line-height: 1.5;
-      max-width: none;
-white-space: nowrap;
+      white-space: nowrap;
     }
 
     .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
 
     .hero-cover img {
-  width: clamp(320px, 44vw, 620px);
-  display: block;
-  flex-shrink: 0;
-}
+      width: clamp(160px, 38vw, 520px);
+      display: block;
+    }
 
+    /* ── HOME — BOOK ARGUMENT ── */
     .book-argument {
       border-top: 1px solid var(--np-border);
       background: var(--np-surface);
-      padding: clamp(3rem, 6vw, 5rem) 1.5rem;
+      padding: clamp(2.5rem, 5vw, 5rem) 1.5rem;
     }
 
     .argument-inner {
       max-width: 72rem;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 12rem 1fr;
-      gap: 3rem;
+      grid-template-columns: 10rem 1fr;
+      gap: 2.5rem;
       align-items: start;
     }
 
@@ -320,35 +339,19 @@ white-space: nowrap;
       font-size: clamp(1rem, 1.8vw, 1.1rem);
       line-height: 1.75;
       color: var(--np-text);
-      max-width: 52rem;
       margin-bottom: 1.25rem;
     }
 
     .argument-body p:last-of-type { margin-bottom: 0; }
 
-    .text-link {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--np-accent);
-      border-bottom: 1px solid var(--np-accent);
-      padding-bottom: 2px;
-      transition: opacity 0.15s ease;
-      cursor: pointer;
-    }
-
-    .text-link:hover { opacity: 0.7; }
-
-    .pull-quote-section {
-      padding: clamp(3rem, 6vw, 5rem) 1.5rem;
-    }
-
+    /* ── HOME — PULL QUOTE ── */
+    .pull-quote-section { padding: clamp(2.5rem, 5vw, 5rem) 1.5rem; }
     .pull-quote-inner { max-width: 72rem; margin: 0 auto; }
 
+    /* ── HOME — WRITING PREVIEW ── */
     .writing-preview {
       border-top: 1px solid var(--np-border);
-      padding: clamp(3rem, 6vw, 5rem) 1.5rem;
+      padding: clamp(2.5rem, 5vw, 5rem) 1.5rem;
     }
 
     .writing-preview-inner { max-width: 72rem; margin: 0 auto; }
@@ -357,29 +360,35 @@ white-space: nowrap;
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     .writing-preview-header h2 {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
       font-weight: 400;
     }
 
     /* ── THE BOOK PAGE ── */
-    .book-page { max-width: 72rem; margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) 1.5rem; }
+    .book-page {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 6vw, 6rem) 1.5rem;
+    }
 
     .book-hero-grid {
-  display: grid;
-  grid-template-columns: 440px 1fr;
-      gap: 4rem;
+      display: grid;
+      grid-template-columns: minmax(0, 440px) 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
       align-items: start;
-      margin-bottom: clamp(3rem, 6vw, 5rem);
+      margin-bottom: clamp(2.5rem, 5vw, 5rem);
     }
 
     .book-hero-grid img { width: 100%; display: block; }
 
     .book-title {
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(1.8rem, 5vw, 3.5rem);
       letter-spacing: -0.02em;
       margin-bottom: 0.75rem;
     }
@@ -394,8 +403,8 @@ white-space: nowrap;
 
     .book-section {
       border-top: 1px solid var(--np-border);
-      padding-top: clamp(2.5rem, 5vw, 4rem);
-      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      padding-top: clamp(2rem, 4vw, 4rem);
+      margin-bottom: clamp(2rem, 4vw, 4rem);
     }
 
     .book-section-label {
@@ -404,7 +413,7 @@ white-space: nowrap;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--np-muted);
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
     }
 
     .argument-text p {
@@ -427,7 +436,7 @@ white-space: nowrap;
     .act-item { border-top: 2px solid var(--np-border); padding-top: 1.5rem; }
 
     .act-item h3 {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 500;
       margin-bottom: 0.75rem;
       line-height: 1.2;
@@ -447,19 +456,23 @@ white-space: nowrap;
     }
 
     /* ── ABOUT PAGE ── */
-    .about-page { max-width: 72rem; margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) 1.5rem; }
+    .about-page {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 6vw, 6rem) 1.5rem;
+    }
 
     .about-grid {
-  display: grid;
-  grid-template-columns: 1fr 360px;
-      gap: 5rem;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: clamp(2rem, 4vw, 5rem);
       align-items: start;
     }
 
     .about-name {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-size: clamp(2.2rem, 6vw, 4.5rem);
       letter-spacing: -0.02em;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
 
     .bio-text p {
@@ -467,7 +480,6 @@ white-space: nowrap;
       font-size: clamp(1rem, 1.8vw, 1.05rem);
       line-height: 1.8;
       color: var(--np-text);
-      max-width: 52rem;
       margin-bottom: 1.5rem;
     }
 
@@ -492,10 +504,7 @@ white-space: nowrap;
       padding-bottom: 2px;
     }
 
-    .about-photo {
-      position: sticky;
-      top: 5rem;
-    }
+    .about-photo { position: sticky; top: 5rem; }
 
     .about-photo img {
       width: 100%;
@@ -507,10 +516,14 @@ white-space: nowrap;
     }
 
     /* ── WRITING PAGE ── */
-    .writing-page { max-width: 72rem; margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) 1.5rem; }
+    .writing-page {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 6vw, 6rem) 1.5rem;
+    }
 
     .writing-page h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-size: clamp(2rem, 6vw, 4rem);
       letter-spacing: -0.02em;
       margin-bottom: 1rem;
     }
@@ -520,7 +533,7 @@ white-space: nowrap;
       font-size: 1rem;
       color: var(--np-muted);
       line-height: 1.6;
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
       max-width: 36rem;
     }
 
@@ -545,22 +558,119 @@ white-space: nowrap;
       max-width: 36rem;
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-cover { display: flex; }
-      .hero-cover img { width: 160px; }
-      .argument-inner { grid-template-columns: 1fr; }
-      .book-hero-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .book-hero-grid img { max-width: 200px; }
-      .acts-grid { grid-template-columns: 1fr; }
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-photo { position: static; max-width: 280px; }
-      .nav-links { gap: 1rem; }
+    /* ══════════════════════════════════════
+       RESPONSIVE — TABLET  (max 900px)
+    ══════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr 260px;
+        gap: 2.5rem;
+      }
+
+      .book-hero-grid {
+        grid-template-columns: minmax(0, 320px) 1fr;
+      }
+
+      .acts-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .hero-tagline { white-space: normal; }
     }
 
-    @media (max-width: 480px) {
-      .nav-links a { font-size: 0.6rem; letter-spacing: 0.05em; }
+    /* ══════════════════════════════════════
+       RESPONSIVE — MOBILE  (max 680px)
+    ══════════════════════════════════════ */
+    @media (max-width: 680px) {
+
+      /* Nav — tighten spacing */
+      .nav-inner { height: 3.5rem; padding: 0 1rem; }
+      .nav-brand { font-size: 0.6rem; letter-spacing: 0.1em; }
+      .nav-links { gap: 0.75rem; }
+      .nav-links a { font-size: 0.58rem; letter-spacing: 0.05em; }
+
+      /* Hero — stack vertically, cover below name */
+      .hero { padding: 2rem 1rem 1.5rem; }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        align-items: start;
+      }
+
+      .hero h1 { font-size: clamp(2.8rem, 14vw, 4rem); margin-bottom: 1rem; }
+
+      .hero-tagline {
+        font-size: 1rem;
+        white-space: normal;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-cover {
+        display: flex;
+        justify-content: center;
+      }
+
+      .hero-cover img {
+        width: clamp(160px, 55vw, 260px);
+      }
+
+      .hero-ctas { gap: 0.75rem; }
+      .btn-primary, .btn-secondary { padding: 0.75rem 1.25rem; font-size: 0.7rem; }
+
+      /* Book argument — single column */
+      .book-argument { padding: 2rem 1rem; }
+      .argument-inner {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      /* Pull quote */
+      .pull-quote-section { padding: 2rem 1rem; }
+      blockquote.pull-quote { padding: 1.25rem 1.25rem; }
+
+      /* Writing preview */
+      .writing-preview { padding: 2rem 1rem; }
+
+      /* Book page */
+      .book-page { padding: 2rem 1rem; }
+      .book-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .book-hero-grid img {
+        max-width: 260px;
+        margin: 0 auto;
+      }
+      .acts-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .book-cta-bottom { text-align: left; }
+
+      /* About page */
+      .about-page { padding: 2rem 1rem; }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      /* Photo appears before bio on mobile */
+      .about-photo {
+        position: static;
+        order: -1;
+        max-width: 240px;
+      }
+      .about-photo img { aspect-ratio: 1/1; object-position: center 15%; }
+
+      /* Writing page */
+      .writing-page { padding: 2rem 1rem; }
+
+      /* Footer */
+      .site-footer { padding: 2rem 1rem; }
+      .footer-top { flex-direction: column; gap: 1.5rem; }
+      .footer-bottom { flex-direction: column; gap: 0.75rem; }
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — SMALL MOBILE (max 400px)
+    ══════════════════════════════════════ */
+    @media (max-width: 400px) {
+      .nav-links a { font-size: 0.52rem; }
+      .hero h1 { font-size: 13vw; }
     }
   </style>
 </head>
@@ -579,7 +689,7 @@ white-space: nowrap;
     </div>
   </nav>
 
-  <!-- HOME PAGE -->
+  <!-- ═══════════ HOME PAGE ═══════════ -->
   <div id="page-home" class="page active">
     <section class="hero">
       <div class="hero-grid">
@@ -592,10 +702,10 @@ white-space: nowrap;
           </div>
         </div>
         <div class="hero-cover">
-  <a onclick="showPage('the-book')" style="cursor:pointer">
-    <img src="public/book mockup black bg.png" alt="The Carbon Ledger — Nadine Pillay" />
-  </a>
-</div>
+          <a onclick="showPage('the-book')" style="cursor:pointer">
+            <img src="public/book mockup black bg.png" alt="The Carbon Ledger — Nadine Pillay" />
+          </a>
+        </div>
       </div>
     </section>
 
@@ -605,7 +715,7 @@ white-space: nowrap;
         <div class="argument-body">
           <p>Net zero is not a climate target. It is an accounting structure — one designed to defer the cost of atmospheric damage across decades and assign its settlement to the countries least responsible for creating it. <em>The Carbon Ledger</em> traces the legal, financial, and technical architecture through which the sky was enclosed, development was converted to debt, and the vocabulary of rescue was placed in service of extraction.</p>
           <p>The arithmetic has always been available. This book makes it visible.</p>
-          <div style="margin-top:2rem">
+          <div style="margin-top:1.5rem">
             <a onclick="showPage('the-book')" class="text-link">More about the book →</a>
           </div>
         </div>
@@ -628,7 +738,7 @@ white-space: nowrap;
           <a onclick="showPage('writing')" class="mono-label" style="cursor:pointer;transition:color 0.15s ease" onmouseover="this.style.color='var(--np-accent)'" onmouseout="this.style.color='var(--np-muted)'">All posts →</a>
         </div>
         <div style="border-top:1px solid var(--np-border); padding-top:1.75rem">
-          <p style="font-family:'Instrument Sans',sans-serif; font-size:1rem; color:var(--np-muted); line-height:1.65; margin-bottom:1.5rem">Essays and analysis published on Substack. New writing on climate finance, net zero accountability, and the politics of carbon accounting.</p>
+          <p style="font-family:'Instrument Sans',sans-serif; font-size:1rem; color:var(--np-muted); line-height:1.65; margin-bottom:1.5rem">Essays and analysis published on Substack. Writing on climate finance, net zero accountability, and the politics of carbon accounting.</p>
           <a href="https://realnadinex.substack.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">Read on Substack ↗</a>
         </div>
       </div>
@@ -655,10 +765,10 @@ white-space: nowrap;
     </footer>
   </div>
 
-  <!-- ABOUT PAGE -->
+  <!-- ═══════════ ABOUT PAGE ═══════════ -->
   <div id="page-about" class="page">
     <article class="about-page">
-      <div class="mono-label" style="margin-bottom:3rem">About</div>
+      <div class="mono-label" style="margin-bottom:2.5rem">About</div>
       <div class="about-grid">
         <div>
           <h1 class="about-name">Nadine Pillay</h1>
@@ -701,10 +811,10 @@ white-space: nowrap;
     </footer>
   </div>
 
-  <!-- THE BOOK PAGE -->
+  <!-- ═══════════ THE BOOK PAGE ═══════════ -->
   <div id="page-the-book" class="page">
     <div class="book-page">
-      <div class="mono-label" style="margin-bottom:3rem">The Book</div>
+      <div class="mono-label" style="margin-bottom:2.5rem">The Book</div>
 
       <div class="book-hero-grid">
         <img src="public/book mockup black bg.png" alt="The Carbon Ledger — Nadine Pillay" />
@@ -772,7 +882,7 @@ white-space: nowrap;
     </footer>
   </div>
 
-  <!-- WRITING PAGE -->
+  <!-- ═══════════ WRITING PAGE ═══════════ -->
   <div id="page-writing" class="page">
     <div class="writing-page">
       <div class="mono-label" style="margin-bottom:1rem">Writing</div>
@@ -782,20 +892,20 @@ white-space: nowrap;
       </p>
 
       <div class="substack-cta">
-  <p>All essays are published and archived at realnadinex.substack.com. Subscribe to receive new writing as it is published.</p>
-  <a href="https://realnadinex.substack.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">Visit Substack ↗</a>
-</div>
+        <p>All essays are published and archived at realnadinex.substack.com. Subscribe to receive new writing as it is published.</p>
+        <a href="https://realnadinex.substack.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">Visit Substack ↗</a>
+      </div>
 
-<div style="margin-top: 3rem;">
-  <div class="mono-label" style="margin-bottom: 2rem;">Featured</div>
-  <a href="https://realnadinex.substack.com/p/the-hidden-arithmetic-of-investment" target="_blank" rel="noopener noreferrer" class="post-card" style="display:block">
-    <div class="mono-label" style="margin-bottom: 0.5rem;">2 April 2026</div>
-    <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.4rem,3vw,2rem); font-weight:400; color:var(--np-text); margin-bottom:0.5rem; line-height:1.2; transition:color 0.15s ease;" class="hover-accent">The Hidden Arithmetic of Investment</h2>
-    <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1rem; font-style:italic; color:var(--np-muted); margin-bottom:1rem;">What South Africa's R2 trillion drive actually costs — and who pays it</p>
-    <p style="font-family:'Instrument Sans',sans-serif; font-size:0.9rem; color:var(--np-muted); line-height:1.65; margin-bottom:1rem; max-width:52rem;">A journey through the Northern Cape — from Namaqua flower country to a coastal diamond town fenced off by De Beers — that became an investigation into how investment announcements reach communities: after the agreement is already made.</p>
-    <span style="font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--np-accent);">Read →</span>
-  </a>
-</div>
+      <div style="margin-top:3rem">
+        <div class="mono-label" style="margin-bottom:2rem">Featured</div>
+        <a href="https://realnadinex.substack.com/p/the-hidden-arithmetic-of-investment" target="_blank" rel="noopener noreferrer" class="post-card" style="display:block">
+          <div class="mono-label" style="margin-bottom:0.5rem">2 April 2026</div>
+          <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.4rem,3vw,2rem); font-weight:400; color:var(--np-text); margin-bottom:0.5rem; line-height:1.2;">The Hidden Arithmetic of Investment</h2>
+          <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1rem; font-style:italic; color:var(--np-muted); margin-bottom:1rem;">What South Africa's R2 trillion drive actually costs — and who pays it</p>
+          <p style="font-family:'Instrument Sans',sans-serif; font-size:0.9rem; color:var(--np-muted); line-height:1.65; margin-bottom:1rem; max-width:52rem;">A journey through the Northern Cape — from Namaqua flower country to a coastal diamond town fenced off by De Beers — that became an investigation into how investment announcements reach communities: after the agreement is already made.</p>
+          <span style="font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--np-accent);">Read →</span>
+        </a>
+      </div>
     </div>
 
     <footer class="site-footer">
@@ -820,32 +930,25 @@ white-space: nowrap;
   </div>
 
   <script>
-    // Set copyright year everywhere
     const year = new Date().getFullYear();
     ['footer-year','footer-year-about','footer-year-book','footer-year-writing'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.textContent = '© ' + year + ' Nadine Pillay. All rights reserved.';
     });
 
-    // Page routing
     function showPage(name) {
-      // Hide all pages
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      // Show target
       const target = document.getElementById('page-' + name);
       if (target) {
         target.classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
-      // Update nav
       document.querySelectorAll('.nav-links a').forEach(a => {
         a.classList.toggle('active', a.dataset.page === name);
       });
-      // Update URL hash for bookmarking
       history.pushState(null, '', '#' + name);
     }
 
-    // Handle back/forward and direct URL with hash
     function handleHash() {
       const hash = window.location.hash.replace('#', '') || 'home';
       const valid = ['home', 'about', 'the-book', 'writing'];
